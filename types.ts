@@ -46,12 +46,19 @@ export type AgentName =
   | 'Twin Architect Agent'
   | 'Counterfactual Simulator';
 
+export interface EducationalInsight {
+  mistake: string;
+  delayRisk: string;
+  medicalLogic: string;
+}
+
 export interface TriageStep {
   question: string;
   options?: string[];
   riskLevel: 'Low' | 'Medium' | 'High' | 'Emergency';
   summarySoFar: string;
   isComplete: boolean;
+  educationalInsight?: EducationalInsight;
   result?: TriageResult;
 }
 

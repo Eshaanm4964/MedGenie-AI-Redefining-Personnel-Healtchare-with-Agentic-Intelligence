@@ -163,10 +163,20 @@ export const searchMedicalInfo = async (query: string, profile: UserProfile) => 
 };
 
 export const getNextTriageStep = async (p: UserProfile, s: string, h: any[]): Promise<TriageStep> => {
+  const systemInstruction = `
+    You are a professional medical triage agent.
+    Provide the next triage step in JSON format.
+    Include a field "educationalInsight" which contains:
+    - "mistake": A common mistake people make with these symptoms.
+    - "delayRisk": What happens when they delay care.
+    - "medicalLogic": The pathological reason why this symptom is significant.
+    Translate all response fields to ${p.preferredLanguage}.
+  `;
+
   const res = await ai.models.generateContent({
     model: 'gemini-3-pro-preview',
-    contents: [{ role: 'user', parts: [{ text: `Triage in ${p.preferredLanguage}: ${s}. History: ${JSON.stringify(h)}` }] }],
-    config: { responseMimeType: "application/json" },
+    contents: [{ role: 'user', parts: [{ text: `Symptoms: ${s}. History: ${JSON.stringify(h)}` }] }],
+    config: { systemInstruction, responseMimeType: "application/json" },
   });
   return JSON.parse(res.text || '{}');
 };
