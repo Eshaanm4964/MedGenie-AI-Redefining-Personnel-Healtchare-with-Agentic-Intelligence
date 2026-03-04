@@ -1,6 +1,6 @@
 # 🩺 MediGenie AI - Your Agentic Medical Assistant
 
-MediGenie AI is a state-of-the-art medical companion designed to empower users with personalized health insights, clinical-grade symptom triage, and longitudinal health tracking. Built with Google's Gemini 3 series models, it bridges the gap between complex medical data and actionable patient understanding.
+MediGenie AI is a state of the art medical companion designed to empower users with personalized health insights, clinical-grade symptom triage, and longitudinal health tracking. Built with Google's Gemini 3 series models, it bridges the gap between complex medical data and actionable patient understanding.
 
 
 ## 🌟 Key Features
